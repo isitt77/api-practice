@@ -16,7 +16,8 @@ fetch("https://services5.arcgis.com/4LKAHwqnBooVDUlX/arcgis/rest/services/LandCl
     .then(res => {
         return res.json()
     })
-    .then(data => console.log(data))
+    .then(data => console.log(data.features))
+    // .then(data => console.log(data.features[0])) // <-- specific index from array
 
 
 
