@@ -41,9 +41,24 @@ async function loadIntoTable(url, table) {
     const tableHead = document.querySelector("thead")
     const tableBody = document.querySelector("tbody")
     const response = await fetch(url)
-    const data = await response.json()
+    const { features } = await response.json()
 
-    console.log(data)
+    console.log(features)
+
+    let headers = features[0].attributes.ParkName
+    let rows = features[0].geometry.rings[0][0]
+
+    // Clear the table
+    tableHead.innerHTML = "<tr></tr>"
+    tableBody.innerHTML = ""
+
+    // Populate headers 
+    for (let headerText of headers) {
+        const headerElement = document.createElement("th")
+
+        headerElement.textContent = headerText
+        tableHead.querySelector("tr").appendChild(headerElement)
+    }
 }
 
 loadIntoTable(parksApi, table)
