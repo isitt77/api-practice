@@ -46,7 +46,7 @@ async function loadIntoTable(url, table) {
     console.log(features)
 
     let headers = features[0].attributes.ParkName
-    let rows = features[0].geometry.rings[0]
+    let rows = features[0].geometry.rings[0][0]
 
     // Clear the table
     tableHead.innerHTML = "<tr></tr>"
@@ -61,16 +61,15 @@ async function loadIntoTable(url, table) {
     }
 
     // Populate rows
-    for (const row of rows) {
-        const rowElement = document.createElement("tr")
-        for (const cellText of row) {
-            const cellElement = document.createElement("td")
 
-            cellElement.textContent = cellText
-            rowElement.appendChild(cellElement)
-        }
-        tableBody.appendChild(rowElement)
+    const rowElement = document.createElement("tr")
+    for (const cellText of rows) {
+        const cellElement = document.createElement("td")
+
+        cellElement.textContent = cellText
+        rowElement.appendChild(cellElement)
     }
+    tableBody.appendChild(rowElement)
 }
 
 loadIntoTable(parksApi, table)
