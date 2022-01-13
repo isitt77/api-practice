@@ -16,9 +16,11 @@ fetch("https://services5.arcgis.com/4LKAHwqnBooVDUlX/arcgis/rest/services/LandCl
     .then(res => {
         return res.json()
     })
-    .then(data => console.log(data.features))
+    // .then(data => console.log(data.features))
     // .then(data => console.log(data.features[0])) // <-- specific index from array
-
+    // .then(data => console.log(data.features[1].attributes.ParkName))
+    // .then(data => document.write(data.features[1].attributes.ParkName))
+    .then(data => console.log(data.features[1].geometry.rings[0][0])) // <-- Coordinates long lat
 
 
 
