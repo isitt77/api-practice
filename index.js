@@ -43,9 +43,17 @@ async function loadIntoTable(url, table) {
     const response = await fetch(url)
     const { features } = await response.json()
 
-    console.log(features)
+    // console.log(features)
 
-    let headers = features[0].attributes.ParkName
+    let headers = () => {
+        for (let i = 0; i < features.length; i++) {
+            const header = features[i].attributes.ParkName
+            console.log(header)
+        }
+        // features[0].attributes.ParkName
+    }
+    headers()
+
     let rows = features[0].geometry.rings[0][0]
 
     // Clear the table
@@ -53,12 +61,12 @@ async function loadIntoTable(url, table) {
     tableBody.innerHTML = ""
 
     // Populate headers 
-    for (let headerText of headers) {
-        const headerElement = document.createElement("th")
+    // for (let headerText of headers) {
+    //     const headerElement = document.createElement("th")
 
-        headerElement.textContent = headerText
-        tableHead.querySelector("tr").appendChild(headerElement)
-    }
+    //     headerElement.textContent = headerText
+    //     tableHead.querySelector("tr").appendChild(headerElement)
+    // }
 
     // Populate rows
 
