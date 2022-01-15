@@ -52,15 +52,18 @@ async function loadIntoTable(url, table) {
         for (let i = 0; i < features.length; i++) {
             const parks = await features[i].attributes.ParkName
             // console.log(header.attributes.ParkName)
-            // return header
+            // return parks
             header.push(parks)
             // console.log(parks)
         }
         // features[0].attributes.ParkName
-        console.log(header)
+        // console.log(header)
         // return header.join("")
+        return header
+        // console.log(parksArr)
+        // return parksArr
     }
-    headers()
+    // headers()
 
     let rows = features[0].geometry.rings[0][0]
 
@@ -69,12 +72,22 @@ async function loadIntoTable(url, table) {
     tableBody.innerHTML = ""
 
     // Populate headers 
+    for (let headerText of headers) {
+        const headerElement = document.createElement("th")
+
+        headerElement.textContent = headerText
+        tableHead.querySelector("tr").appendChild(headerElement)
+    }
+
+    // Populate headers v2
     // for (let headerText of headers) {
     //     const headerElement = document.createElement("th")
 
     //     headerElement.textContent = headerText
     //     tableHead.querySelector("tr").appendChild(headerElement)
     // }
+
+
 
     // Populate rows
 
