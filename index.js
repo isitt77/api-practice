@@ -42,15 +42,23 @@ async function loadIntoTable(url, table) {
     const tableBody = document.querySelector("tbody")
     const response = await fetch(url)
     const { features } = await response.json()
-
     // console.log(features)
 
-    let headers = () => {
+    // const data = await response.json()
+    // console.log(data)
+
+    let headers = async () => {
+        let header = []
         for (let i = 0; i < features.length; i++) {
-            const header = features[i].attributes.ParkName
-            console.log(header)
+            const parks = await features[i].attributes.ParkName
+            // console.log(header.attributes.ParkName)
+            // return header
+            header.push(parks)
+            // console.log(parks)
         }
         // features[0].attributes.ParkName
+        console.log(header)
+        // return header.join("")
     }
     headers()
 
