@@ -18,10 +18,26 @@ function fetchData() {
             return res.json()
         })
         .then(data => {
-            console.log(data.features)
+            // console.log(data.features)
             const parkName = data.features[0].attributes.ParkName
+            // const features = data.features
+
             document.querySelector("#app")
                 .innerHTML = `<h1>${parkName}</h1>`
+
+            // for (let i = 0; i < features.length; i++) {
+            //     const feature = features[i];
+            //     console.log(feature.attributes.ParkName)
+
+
+
+            // for (let j = 0; j < feature.length; j++) {
+            //     const parkName = feature[j].attributes.ParkName;
+            //     console.log(parkName)
+            //     // document.querySelector("#app")
+            //     //     .innerHTML = `<h1>${parkName}</h1>`
+            // }
+            // }
         })
         .catch(err => {
             console.log(err)
