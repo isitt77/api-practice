@@ -13,7 +13,7 @@ async function loadIntoTable(url, table) {
 
     console.log(features)
 
-    let headers = features[0].attributes.ParkName
+    let header = "Park Name"
     let rows = features[0].geometry.rings[0][0]
 
     // Clear the table
@@ -21,12 +21,10 @@ async function loadIntoTable(url, table) {
     tableBody.innerHTML = ""
 
     // Populate headers 
-    for (let headerText of headers) {
-        const headerElement = document.createElement("th")
+    const headerElement = document.createElement("th")
 
-        headerElement.textContent = headerText
-        tableHead.querySelector("tr").appendChild(headerElement)
-    }
+    headerElement.textContent = header
+    tableHead.querySelector("tr").appendChild(headerElement)
 
     // Populate rows
 
