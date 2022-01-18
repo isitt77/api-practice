@@ -19,25 +19,22 @@ function fetchData() {
         })
         .then(data => {
             // console.log(data.features)
-            const parkName = data.features[0].attributes.ParkName
-            // const features = data.features
+            // const parkName = data.features[0].attributes.ParkName
+            const features = data.features
 
-            document.querySelector("#app")
-                .innerHTML = `<h1>${parkName}</h1>`
+            // document.querySelector("#app")
+            //     .insertAdjacentHTML("afterbegin", `<h1>${parkName}</h1>`)
 
-            // for (let i = 0; i < features.length; i++) {
-            //     const feature = features[i];
-            //     console.log(feature.attributes.ParkName)
+            for (let i = 0; i < features.length; i++) {
+                const feature = data.features[i];
+                console.log(feature.attributes.ParkName)
+                const park = feature.attributes.ParkName
+                document.querySelector("#app")
+                    .insertAdjacentHTML("afterbegin", `<h1>${park}</h1>`)
+            }
 
 
 
-            // for (let j = 0; j < feature.length; j++) {
-            //     const parkName = feature[j].attributes.ParkName;
-            //     console.log(parkName)
-            //     // document.querySelector("#app")
-            //     //     .innerHTML = `<h1>${parkName}</h1>`
-            // }
-            // }
         })
         .catch(err => {
             console.log(err)
@@ -45,3 +42,22 @@ function fetchData() {
 }
 
 fetchData()
+
+
+
+
+
+
+
+
+
+
+
+
+// for (let j = 0; j < feature.length; j++) {
+            //     const parkName = feature[j].attributes.ParkName;
+            //     console.log(parkName)
+            //     // document.querySelector("#app")
+            //     //     .innerHTML = `<h1>${parkName}</h1>`
+            // }
+            // }
