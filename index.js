@@ -17,9 +17,11 @@ async function loadIntoTable(url, table) {
     // let rows = features[0].geometry.rings[0][0]
     let rows = features.map(f => {
         const row = f.attributes.ParkName
+        // console.log(row)
         return row
-    }).join(" ")
-    console.log(rows)
+    })
+    // .join(" ")
+    // console.log(rows)
     // document.querySelector("#app")
     //     .insertAdjacentHTML("afterbegin", rows)
 
@@ -36,12 +38,29 @@ async function loadIntoTable(url, table) {
     // Populate rows
 
     const rowElement = document.createElement("tr")
-    const cellElement = document.createElement("td")
+    for (const cellText of rows) {
+        const cellElement = document.createElement("td")
 
-    cellElement.textContent = rows
-    rowElement.appendChild(cellElement)
-
+        cellElement.textContent = cellText
+        rowElement.appendChild(cellElement)
+    }
     tableBody.appendChild(rowElement)
 }
 
 loadIntoTable(parksApi, table)
+
+
+
+
+
+// Original populate rows from video 2
+// Populate rows
+
+// const rowElement = document.createElement("tr")
+// for (const cellText of rows) {
+//     const cellElement = document.createElement("td")
+
+//     cellElement.textContent = cellText
+//     rowElement.appendChild(cellElement)
+// }
+// tableBody.appendChild(rowElement)
