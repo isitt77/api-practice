@@ -14,7 +14,14 @@ async function loadIntoTable(url, table) {
     console.log(features)
 
     let header = "Park Name"
-    let rows = features[0].geometry.rings[0][0]
+    // let rows = features[0].geometry.rings[0][0]
+    let rows = features.map(f => {
+        const row = f.attributes.ParkName
+        return row
+    }).join(" ")
+    console.log(rows)
+    // document.querySelector("#app")
+    //     .insertAdjacentHTML("afterbegin", rows)
 
     // Clear the table
     tableHead.innerHTML = "<tr></tr>"
@@ -29,12 +36,11 @@ async function loadIntoTable(url, table) {
     // Populate rows
 
     const rowElement = document.createElement("tr")
-    for (const cellText of rows) {
-        const cellElement = document.createElement("td")
+    const cellElement = document.createElement("td")
 
-        cellElement.textContent = cellText
-        rowElement.appendChild(cellElement)
-    }
+    cellElement.textContent = rows
+    rowElement.appendChild(cellElement)
+
     tableBody.appendChild(rowElement)
 }
 
