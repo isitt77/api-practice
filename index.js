@@ -36,9 +36,11 @@ function fetchData() {
 
             // Video 3's loop (.map) 
             const features = data.features.map(f => {
-                return f.attributes.ParkName
-            })
+                return `<h1>${f.attributes.ParkName}</h1>`
+            }).join(" ")
             console.log(features)
+            document.querySelector("#app")
+                .insertAdjacentHTML("afterbegin", features)
 
         })
         .catch(err => {
