@@ -27,9 +27,10 @@ function fetchData() {
 
             // Video 3's loop (.map) 
             const features = data.features.map(f => {
-                return `<h1>${f.attributes.ParkName}</h1>`
+                // console.log(f.attributes)
+                return `<p>${f.attributes.OBJECTID}. ${f.attributes.ParkName}</p>`
             }).join(" ")
-            console.log(features)
+            // console.log(features)
             document.querySelector("#app")
                 .insertAdjacentHTML("afterbegin", features)
 

@@ -1,4 +1,16 @@
-td{
-    display: block;
+/* tr{
+    display: table-row;
     display: flex;
+} */
+
+/* td{
+    display: flex;
+} */
+
+p{
+    display: inline-block;
+    justify-content: center;
+    justify-items: auto;
+    align-items: flex-start;
+    margin: 1%;
 }
