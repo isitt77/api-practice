@@ -22,7 +22,9 @@ const app = Vue.createApp({
                     // Video 3's loop (.map) 
                     const features = data.features.map(f => {
                         // console.log(f.attributes)
-                        return `<p>${f.attributes.OBJECTID}. ${f.attributes.ParkName}</p>`
+                        const parkNum = f.attributes.OBJECTID
+                        const parkName = f.attributes.ParkName
+                        return `<p>${parkNum}. ${parkName}</p>`
                     }).join(" ")
                     // console.log(features)
                     document.querySelector("#app")
