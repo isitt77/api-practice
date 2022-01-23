@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            tableName: "Parks"
+            tableName: "Parks",
+            featureData: ""
 
         }
     },
@@ -24,12 +25,14 @@ const app = Vue.createApp({
                         // console.log(f.attributes)
                         const parkNum = f.attributes.OBJECTID
                         const parkName = f.attributes.ParkName
-                        return `<p>${parkNum}. ${parkName}</p>`
-                    }).join(" ")
+                        return `<td>${parkName}</td>`
+                    })
+                        .join(" ")
                     // console.log(features)
-                    document.querySelector("#app")
+                    document.querySelector("#parks")
                         .insertAdjacentHTML("afterbegin", features)
-
+                    // .append(features)
+                    // features = this.featureData
                 })
                 .catch(err => {
                     console.log(err)
