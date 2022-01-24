@@ -31,7 +31,7 @@ const app = Vue.createApp({
                     // console.log(features)
                     document.querySelector("#parks")
                         .insertAdjacentHTML("afterbegin", features)
-                    // .append(features)
+                    // .appendChild(features)
                     // features = this.featureData
                 })
                 .catch(err => {
