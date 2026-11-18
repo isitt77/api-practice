@@ -19,12 +19,12 @@ function fetchData() {
             //     .insertAdjacentHTML("afterbegin", data.base_experience)
 
             for (const [key, value] of Object.entries(data)) {
-                console.log(`${key}: ${value}`)
+                // console.log(`${key}: ${value}`)
                 const html = `<div class="data-row">
                 <strong>${key}:</strong> <span>${value}</span></div>`
 
                 document.querySelector("#app")
-                    .insertAdjacentHTML("afterbegin", html)
+                    .insertAdjacentHTML("beforeend", html)
             }
 
             // document.querySelector("#app")
