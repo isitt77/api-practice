@@ -12,20 +12,23 @@ function fetchData() {
             return res.json()
         })
         .then(data => {
-            console.log(data)
+            // console.log("Original res.json log: " + data)
             // const pokeName = data.name
+            getNestedEntries(data)
+            console.log("Posted Nested Parser...")
+            console.log(data)
 
             // document.querySelector("#app")
             //     .insertAdjacentHTML("afterbegin", data.base_experience)
 
-            for (const [key, value] of Object.entries(data)) {
-                // console.log(`${key}: ${value}`)
-                const html = `<div class="data-row">
-                <strong>${key}:</strong> <span>${value}</span></div>`
+            // for (const [key, value] of Object.entries(data)) {
+            //     // console.log(`${key}: ${value}`)
+            //     const html = `<div class="data-row">
+            //     <strong>${key}:</strong> <span>${value}</span></div>`
 
-                document.querySelector("#app")
-                    .insertAdjacentHTML("beforeend", html)
-            }
+            //     document.querySelector("#app")
+            //         .insertAdjacentHTML("beforeend", html)
+            // }
 
             // document.querySelector("#app")
             //     .insertAdjacentHTML("afterbegin", data)
@@ -62,3 +65,14 @@ function fetchData() {
 }
 
 fetchData()
+
+function getNestedEntries(obj, results = []) {
+    for (const [key, value] of Object.entries(obj)) {
+        if (value && typeof value === "object" && !Array.isArray(value)) {
+            getNestedEntries(value, results);
+        } else {
+            results.push({ key, value });
+        }
+    }
+    return results;
+}
