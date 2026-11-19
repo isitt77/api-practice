@@ -9,6 +9,8 @@ function fetchData() {
                 throw Error("Response not ok.")
             }
             console.log("API fetched")
+            const contentType = res.headers.get("content-type")
+            console.log("Content type headers: " + contentType)
             return res.json()
         })
         .then(data => {
