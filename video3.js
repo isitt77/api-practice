@@ -17,8 +17,8 @@ function fetchData() {
             // console.log("Original res.json log: " + data)
             // const pokeName = data.name
             getNestedEntries(data)
-            console.log("Post-Nested Parser...")
-            console.log(data)
+            // console.log("Post-Nested Parser...")
+            // console.log(data)
 
             // document.querySelector("#app")
             //     .insertAdjacentHTML("afterbegin", data.base_experience)
@@ -69,6 +69,7 @@ function fetchData() {
 fetchData()
 
 async function getNestedEntries(obj) {
+    const container = document.querySelector("#app")
     let html = ""
     for (const [key, value] of Object.entries(obj)) {
         if (value && typeof value === "object" && !Array.isArray(value)) {
@@ -77,6 +78,24 @@ async function getNestedEntries(obj) {
         } else {
             // results.push({ key, value });
             html += `<li><strong>${key}:</strong> ${value}</li>`
+
+
+            // // 3. Create the < a > (URL) element
+            // const link = document.createElement('a');
+            // link.href = obj[value];
+            // link.textContent = obj.title || 'Visit Link';
+            // link.target = '_blank';
+            // link.rel = 'noopener noreferrer';
+
+            // // 4. Create the <img> element
+            // const img = document.createElement('img');
+            // img.src = obj.imageUrl;
+            // img.alt = obj.description || 'Fetched image';
+            // img.loading = 'lazy';
+
+            // // Append elements to the DOM
+            // link.appendChild(img);
+            // container.appendChild(link);
         }
     }
     // return results;
